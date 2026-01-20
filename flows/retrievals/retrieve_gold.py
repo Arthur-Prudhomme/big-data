@@ -4,7 +4,7 @@ import pandas
 
 from prefect import flow, task
 
-from utils.config import BUCKET_GOLD, get_minio_client
+from ..utils.config import BUCKET_GOLD, get_minio_client
 
 def download_and_inspect(bucket_name: str, object_name: str) -> pandas.DataFrame:
     """_summary_
