@@ -1,5 +1,6 @@
 import csv
 import random
+import pandas
 from datetime import datetime, timedelta
 from pathlib import Path
 from faker import Faker
@@ -48,14 +49,18 @@ def generate_purchases(clients_ids: list[int], avg_purchases_per_client: int, ou
         writer.writeheader()
         writer.writerows(purchases)
 
-    print(f"Generated {len(purchases)} purchases in file {output_path}")
+    print(f"Generated {len(purchases)} purchases in file {output_path} with {len(clients_ids)} clients")
 
 if __name__ == "__main__":
     output_dir = Path(__file__).parent.parent / "data" / "sources"
 
-    clients_ids = list(range(1, 1501))
+
+    data_path = Path("./data/sources")
+    clients_file = str(data_path / "clients.csv")
+    ids_client = pandas.read_csv(clients_file)["id_client"].tolist()
+
     generate_purchases(
-        clients_ids=clients_ids,
+        clients_ids=ids_client,
         avg_purchases_per_client=5,
         output_path=str(output_dir / "purchases.csv")
     )

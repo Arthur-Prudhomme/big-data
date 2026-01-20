@@ -54,6 +54,6 @@ if __name__ == "__main__":
     output_dir = Path(__file__).parent.parent / "data" / "sources"
 
     clients_ids = generate_clients(
-        n_clients= 1500,
+        n_clients= 10000,
         output_path=str(output_dir / "clients.csv")
     )
