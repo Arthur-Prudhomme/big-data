@@ -129,8 +129,8 @@ def silver_transformation_flow():
     print("=" * 50)
 
     # Charger depuis Bronze
-    df_clients = load_bronze_data("clients.csv")
-    df_purchases = load_bronze_data("purchases.csv")
+    df_clients = load_bronze_data("clients")
+    df_purchases = load_bronze_data("purchases")
 
     # Transformer
     clean_clients = transform_clients(df_clients)
